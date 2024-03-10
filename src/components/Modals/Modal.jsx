@@ -1,7 +1,7 @@
 import './Modal.css'
 import Form from '../Form/Form';
 import React, { useState } from 'react'
-export default function Modal({isModalOpen,  modalClose }){
+export default function Modal({isModalOpen,  modalClose, noteText, noteTitle }){
   const [cursorOnModal, setCursorOnModal] = useState(false);
   
   const handleMouseOver = ()=> setCursorOnModal(()=> true )
@@ -17,7 +17,7 @@ export default function Modal({isModalOpen,  modalClose }){
     <>
    {isModalOpen === true && <div className="modal" onClick={ handleFormClicked }>
     <div className="modal-content" onMouseOver={handleMouseOver} onMouseOut={ handleMouseOut }>
-      <Form edit modalClose = { modalClose }></Form>
+      <Form edit modalClose = { modalClose } noteTitle = {noteTitle} noteText = {noteText}></Form>
     </div>
    </div>}
    </>

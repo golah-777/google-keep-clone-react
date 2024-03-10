@@ -5,12 +5,15 @@ export default function Note(props) {
   const [title, setTitle] = useState(props.title);
   const [text, setText] = useState(props.text);
   const [overNote, setOverNote] = useState(false);
+  const [deleteBtn, setDeleteBtn] = useState(false);
 
   const noteClicked = () => {
-    // setTitle('hello hiii');
-    // setText('good bye');
-    props.openModal();
-    props.noteInfo(props.id);
+    if(!deleteBtn){
+      props.openModal();
+      props.noteInfo(props.id);
+   }else{
+     console.log(props.modalClose())
+   }
   };
 
   const mouseOver = () => {
@@ -22,6 +25,7 @@ export default function Note(props) {
   };
 
   const deleteNoteClicked = () => {
+    setDeleteBtn(true)
     props.modalClose()
     props.deleteNote(props.id);
   };

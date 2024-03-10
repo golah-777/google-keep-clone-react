@@ -30,6 +30,9 @@ function App() {
     })}
   }
 
+  const noteTitle = selectedNote.title;
+  const noteText = selectedNote.text;
+
   const openModal = () => {
     setModalOpen(()=>true);
   };
@@ -57,6 +60,8 @@ function App() {
        isModalOpen={isModalOpen}
        modalClose = { modalClose }
        selectedNote = {selectedNote}
+       noteTitle = {noteTitle}
+       noteText = {noteText}
       ></Modal>
     </div>
   );

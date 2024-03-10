@@ -6,12 +6,12 @@ function Form(props) {
     setForm(() => true);
   };
 
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState(props.edit && props.noteTitle || '');
   const titleText = (event) => {
     setTitle(event.target.value);
   };
 
-  const [text, setText] = useState("");
+  const [text, setText] = useState(props.edit && props.noteText || '');
   const textText = (event) => {
     setText(event.target.value);
   };
