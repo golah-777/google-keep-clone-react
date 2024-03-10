@@ -44,17 +44,18 @@ function App() {
       <Form 
        addNotes={addNotes}
        selectedNote = {selectedNote}
+       modalClose = { modalClose }
       ></Form>
       <Notes
         notes={notes}
         deleteNote={deleteNote}
         openModal={openModal}
         noteInfo = {noteInfo}
+        modalClose = { modalClose }
       ></Notes>
       <Modal 
        isModalOpen={isModalOpen}
        modalClose = { modalClose }
-       openModal={openModal}
        selectedNote = {selectedNote}
       ></Modal>
     </div>

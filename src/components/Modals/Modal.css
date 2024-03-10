@@ -126,15 +126,16 @@
   z-index: 1;
  }
  
- /* .modal-content, .modal-content form{
+ .modal-content{
    position: relative;
    top: 50%;
    left: 50%;
    transform: translate(-50%,-50%);
- } */
- 
- .modal-content form{
    width: 599px;
+ }
+ 
+ .modal-content .form{
+   width: 100%;
  }
  
  .modal-content .notetitle-pin, .modal-content .footer{
@@ -154,5 +155,5 @@
   position: relative;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,100%);
+  transform: translate(-50%,0%);
  }

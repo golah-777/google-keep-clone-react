@@ -6,14 +6,12 @@ function Form(props) {
     setForm(() => true);
   };
 
-  console.log(props.selectedNote.title)
-
-  const [title, setTitle] = useState(props.edit && props.selectedNote.title || '');
+  const [title, setTitle] = useState('');
   const titleText = (event) => {
     setTitle(event.target.value);
   };
 
-  const [text, setText] = useState(props.edit && props.selectedNote.title || "");
+  const [text, setText] = useState("");
   const textText = (event) => {
     setText(event.target.value);
   };
@@ -23,9 +21,9 @@ function Form(props) {
       props.addNotes(title, text);
       setForm(() => false);
     } else{
-      props.modalClose()
       setTitle("");
       setText("");
+      props.modalClose()
     }
     setTitle("");
     setText("");

@@ -22,6 +22,7 @@ export default function Note(props) {
   };
 
   const deleteNoteClicked = () => {
+    props.modalClose()
     props.deleteNote(props.id);
   };
 
@@ -147,7 +148,7 @@ export default function Note(props) {
             </svg>
             <div className="tooltip">Add image</div>
           </div>
-          <div className="icons archive" onClick={deleteNoteClicked}>
+          <div className="icons archive" onClick={deleteNoteClicked} >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"

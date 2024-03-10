@@ -1,6 +1,6 @@
 import Note from "./Note";
 
-export default function Notes({ notes, deleteNote, openModal, noteInfo }) {
+export default function Notes({ notes, deleteNote, openModal, noteInfo,  modalClose }) {
   return (
     <div className="notes">
       {notes.length === 0 && <p>Add a note</p>}
@@ -14,6 +14,7 @@ export default function Notes({ notes, deleteNote, openModal, noteInfo }) {
             deleteNote={deleteNote}
             openModal={openModal}
             noteInfo = {noteInfo}
+            modalClose = { modalClose }
           ></Note>
         ))}
     </div>
