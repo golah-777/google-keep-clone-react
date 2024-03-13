@@ -18,50 +18,67 @@ function App() {
   };
 
   const deleteNote = (id) => {
-    setModalOpen(()=>false); 
+    setModalOpen(() => false);
     setNotes(notes.filter((note) => id != note.id));
   };
 
-  const noteInfo = (id)=>{
-    {notes.map(note=> {
-      if(id === note.id){
-        setselectedNote(()=> note);
-      }
-    })}
-  }
+  const noteInfo = (id) => {
+    {
+      notes.map((note) => {
+        if (id === note.id) {
+          setselectedNote(() => note);
+        }
+      });
+    }
+  };
+
+  const editNote = (editedNote) => {
+    setNotes((prevNote) => {
+      const newNotesUpdated = prevNote.map((note) => {
+        if (editedNote.id === note.id) {
+          note.title = editedNote.title;
+          note.text = editedNote.text;
+        }
+        return note;
+      });
+      return newNotesUpdated;
+    });
+  };
 
   const noteTitle = selectedNote.title;
   const noteText = selectedNote.text;
 
   const openModal = () => {
-    setModalOpen(()=>true);
+    setModalOpen(() => true);
   };
-  const modalClose=()=> {
-    setModalOpen(()=>false);
+  const modalClose = () => {
+    setModalOpen(() => false);
   };
 
   return (
     <div className="App">
       <Nevbar></Nevbar>
       <Sidebar></Sidebar>
-      <Form 
-       addNotes={addNotes}
-       selectedNote = {selectedNote}
-       modalClose = { modalClose }
+      <Form
+        addNotes={addNotes}
+        selectedNote={selectedNote}
+        modalClose={modalClose}
+        editNote={editNote}
       ></Form>
       <Notes
         notes={notes}
         deleteNote={deleteNote}
         openModal={openModal}
-        noteInfo = {noteInfo}
-        modalClose = { modalClose }
+        noteInfo={noteInfo}
+        modalClose={modalClose}
       ></Notes>
-      <Modal 
-       isModalOpen={isModalOpen}
-       modalClose = { modalClose }
-       selectedNote = {selectedNote}
-       noteTitle = {noteTitle}
-       noteText = {noteText}
+      <Modal
+        isModalOpen={isModalOpen}
+        modalClose={modalClose}
+        selectedNote={selectedNote}
+        noteTitle={noteTitle}
+        noteText={noteText}
+        editNote={editNote}
       ></Modal>
     </div>
   );

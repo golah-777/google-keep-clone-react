@@ -2,18 +2,16 @@ import "./Note.css";
 import React, { useState } from "react";
 
 export default function Note(props) {
-  const [title, setTitle] = useState(props.title);
-  const [text, setText] = useState(props.text);
   const [overNote, setOverNote] = useState(false);
   const [deleteBtn, setDeleteBtn] = useState(false);
 
   const noteClicked = () => {
-    if(!deleteBtn){
+    if (deleteBtn === true) {
+      props.modalClose();
+    } else {
       props.openModal();
       props.noteInfo(props.id);
-   }else{
-     console.log(props.modalClose())
-   }
+    }
   };
 
   const mouseOver = () => {
@@ -25,10 +23,11 @@ export default function Note(props) {
   };
 
   const deleteNoteClicked = () => {
-    setDeleteBtn(true)
-    props.modalClose()
     props.deleteNote(props.id);
   };
+
+  const handleMouseOver = () => setDeleteBtn(() => true);
+  const handleMouseOut = () => setDeleteBtn(() => false);
 
   return (
     <div
@@ -53,7 +52,7 @@ export default function Note(props) {
         </svg>
       </div>
       <div className="title-note">
-        <span id="title">{title}</span>
+        <span id="title">{props.note.title}</span>
         <div
           className="icons"
           style={{ visibility: overNote === true && "visible" }}
@@ -76,7 +75,7 @@ export default function Note(props) {
         </div>
       </div>
       <div className="text-note">
-        <span id="text">{text}</span>
+        <span id="text">{props.note.text}</span>
       </div>
       <div
         className="footer-note"
@@ -152,7 +151,12 @@ export default function Note(props) {
             </svg>
             <div className="tooltip">Add image</div>
           </div>
-          <div className="icons archive" onClick={deleteNoteClicked} >
+          <div
+            className="icons archive"
+            onClick={deleteNoteClicked}
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
