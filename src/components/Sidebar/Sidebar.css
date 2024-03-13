@@ -23,6 +23,8 @@
   width: 280px;
   cursor: pointer;
   white-space: nowrap;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 .sidebar-items:hover{
@@ -43,21 +45,6 @@
   background-image:  #f1f3f4;
   border-radius: 50%; 
   /* z-index: -1; */
-}
-
-.active svg{
-  fill: black;
-}
-
-.active:hover{
-  background-color: #feefc3;
-  background-size: 47px;
-  background-image:  #f1f3f4;
-  border-radius: 50%;
-}
-
-.active svg:hover{
-  fill: black;
 }
 
 .sidebar-text{
